@@ -43,3 +43,25 @@ h1,h2,h3
 {
  color:white;
 }
+#body-centre{
+    text-align: center;
+}
+
+
+.social-icons {
+    position: fixed; /* Keeps the icons fixed on the left */
+    left: 10px; /* Distance from the left edge */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for centering */
+}
+
+.social-icons a {
+    display: block; /* Stack icons vertically */
+    margin: 10px 0; /* Space between icons */
+    margin: 20px 0;
+}
+
+.social-icons img {
+    width: 30px; /* Set the width of the icons */
+    height: auto; /* Maintain aspect ratio */
+}
