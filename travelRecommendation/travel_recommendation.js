@@ -1,37 +1,21 @@
-function resetForm() {
-            document.getElementById('searchForm').reset();
-            document.getElementById('results').innerHTML = ''; 
-        }
-
-
-
-async function search(event) {
-            event.preventDefault(); // Prevent form submission
-            const query = event.target.query.value.toLowerCase();
-            const resultsDiv = document.getElementById('results');
-            resultsDiv.innerHTML = ''; // Clear previous results
-
-            try {
-                const response = await fetch('file.json'); // Fetch the JSON data
-                const data = await response.json();
-
-                // Filter results based on the query
-                const results = data.filter(item => item.destination.toLowerCase().includes(query));
-
-                // Display results
-                if (results.length > 0) {
-                    results.forEach(item => {
-                        const div = document.createElement('div');
-                        div.textContent = `Destination: ${item.destination}, Description: ${item.description}`;
-                        resultsDiv.appendChild(div);
-                    });
-                } else {
-                    resultsDiv.textContent = 'No results found.';
-                }
-            } catch (error) {
-                console.error('Error fetching data:', error);
-                resultsDiv.textContent = 'Error fetching data.';
-            }
-}
-
-        
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('searchForm');
+    const dialog = document.getElementById('resultDialog');
+    const dialogContent = document.getElementById('dialogContent');
+    const closeBtn = document.getElementById('closeDialogBtn');
+  
+    form.addEventListener('submit', function (event) {
+      event.preventDefault(); // prevent default form submission
+  
+      const query = form.query.value.trim();
+      if (query) {
+        dialogContent.textContent = `You searched for: "${query}"`;
+        dialog.showModal();
+      }
+    });
+  
+    closeBtn.addEventListener('click', function () {
+      dialog.close();
+    });
+  });
+  

@@ -3,6 +3,7 @@
 <head>
     <title>ZainoPronto</title>
     <link rel="stylesheet" href="styles.css"> 
+    <script src="travel_recommendation.js" defer></script>
 </head>
 <body>
     <!-- TASK 2 -->
@@ -21,12 +22,13 @@
           <a href="./contactUs.html" id="Contact_us">Contact Us </a>
     </nav>
     
-    <form id="searchForm" method="GET" onsubmit="return search(event);">
+    <form id="searchForm">
                 <h3>Search for Your Travel Destination</h3>
                 <input type="text" placeholder="Enter your destination..." name="query" required>
-                <button type="submit" onclick="search()">Search</button>
-                <button type="submit" onclick="reset()">Reset</button>
+                <button type="submit">Search</button>
+                <button type="reset">Reset</button>
     </form>
+  
 </header>
 <<!--centre-->
 <div id="body-centre">
@@ -58,7 +60,11 @@
     </a>
 </div>
 
-<!--Team-->
+<dialog id="resultDialog">
+    <h2>Search Result</h2>
+    <p id="dialogContent"></p>
+    <button id="closeDialogBtn">Close</button>
+  </dialog>
 
 </body>
 </html>
