@@ -1,3 +1,4 @@
+<<!--TASK 5-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,15 +6,17 @@
     <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
-    <!-- TASK 2 -->
+    <!-- Task 2:NavBar -->
 <header>
-    <!--header and its 3 container-->
+    
     <div class="image-container">
         <img src="https://raw.githubusercontent.com/bitale-hash/ZainoPronto/refs/heads/main/travelRecommendation/icon3.jpg" alt="Placeholder Image" >
         <div class="image-text">
             <h2>ZainoPronto</h2>   
         </div>   
     </div> 
+   
+   
 
     <nav>
           <a href="./travel_recommendation.html" id="home">Home </a>
@@ -28,21 +31,9 @@
                 <button type="submit" onclick="reset()">Reset</button>
     </form>
 </header>
-<<!--centre-->
-<div id="body-centre">
-    <h1><br><br><br><br>
-        EXPLORE <br> DREAM <br> DESTINATION <br>
-    </h1>    
-    <<!--TASK 3-->
-   <h3><br><br>
-     Dreaming of your next adventure but don’t know where to start? <br>
-     Whether you're craving breathtaking landscapes, vibrant city escapes,<br>
-     or hidden gems off the beaten path, we’ve got you covered. At ZainoPronto,<br>
-     we specialize in organizing personalized trips tailored just for you <br>
-     — hassle-free, inspiring, and unforgettable.
-   </h3>
-</div>
-<!--Social Icon-->
+
+
+
 <div class="social-icons">
     <a href="https://www.facebook.com" target="_blank">
         <img src="https://raw.githubusercontent.com/bitale-hash/ZainoPronto/refs/heads/main/img/icon0.jpg" alt="Facebook" />
@@ -58,7 +49,24 @@
     </a>
 </div>
 
-<!--Team-->
+<div class="contact-form">
+        <h2>Contact Us</h2><br><br><br>
+        <form action="#" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
+  
+
 
 </body>
 </html>
