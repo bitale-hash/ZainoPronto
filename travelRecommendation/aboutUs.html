@@ -24,7 +24,7 @@
           <a href="./contactUs.html" id="Contact_us">Contact Us </a>
     </nav>
     
-    <form action="/search" method="GET">
+    <form id="searchForm" method="GET" onsubmit="return search(event);">
                 <h3>Search for Your Travel Destination</h3>
                 <input type="text" placeholder="Enter your destination..." name="query" required>
                 <button type="submit" onclick="search()">Search</button>

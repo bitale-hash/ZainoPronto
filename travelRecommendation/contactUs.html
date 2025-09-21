@@ -24,7 +24,7 @@
           <a href="./contactUs.html" id="Contact_us">Contact Us </a>
     </nav>
     
-    <form action="/search" method="GET">
+    <form id="searchForm" method="GET" onsubmit="return search(event);">
                 <h3>Search for Your Travel Destination</h3>
                 <input type="text" placeholder="Enter your destination..." name="query" required>
                 <button type="submit" onclick="search()">Search</button>
@@ -49,9 +49,9 @@
     </a>
 </div>
 
-<div class="contact-form">
-        <h2>Contact Us</h2><br><br><br>
-        <form action="#" method="post">
+<div class="contact-form" style="text-align: center;">
+    <br><br><br><h2>Contact Us</h2><br><br><br>
+        <form action="#" method="post" style="text-align: center;">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
