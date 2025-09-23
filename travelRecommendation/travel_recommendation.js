@@ -7,7 +7,10 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', function (event) {
       event.preventDefault(); // prevent default form submission
   
-      const query = form.query.value.trim();
+      const q = form.query.value.trim();
+      const query = q.toLowerCase();
+      
+      const time= Time(query);
       if (query) {
         fetch('travel_recommendation_api.json') 
                            .then(response => response.json())
@@ -25,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             });
                         } else {
                             country.cities.forEach(city => {
+                                console.log('Processing city:', city.name);
                                 if (city.name.toLowerCase().includes(query)) {
                                     results.push(`<h4>${country.name}</h4>`);
                                     results.push(`<p><strong>${city.name}</strong>: ${city.description}</p><img src="${city.imageUrl}" alt="${city.name}" style="width:100px;height:auto;">`);
@@ -70,3 +74,30 @@ closeBtn.addEventListener('click', function () {
 });
 });
   
+
+
+
+function Time(place){
+  const timeZones = {
+        "Toronto": "America/Toronto",
+        "New York": "America/New_York",
+        "London": "Europe/London",
+        "Tokyo": "Asia/Tokyo",
+        "Sydney": "Australia/Sydney"
+    };
+
+    // Get the time zone for the specified place
+    const timeZone = timeZones[place];
+
+    if (timeZone) {
+        // Create options for formatting the time
+        const options = { timeZone: timeZone, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+        
+        // Get the current time in the specified time zone
+        const placeTime = new Date().toLocaleTimeString('en-US', options);
+        
+        return `The current time in ${place} is ${placeTime}.`;
+    } else {
+        return "Sorry, I don't have the time zone information for that city.";
+    }
+}
