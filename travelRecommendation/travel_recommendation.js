@@ -100,4 +100,5 @@ function Time(place){
     } else {
         return "Sorry, I don't have the time zone information for that city.";
     }
+    
 }
