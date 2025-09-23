@@ -11,49 +11,50 @@ document.addEventListener('DOMContentLoaded', function () {
       const query = q.toLowerCase();
       
       const time= Time(query);
+      console.log('time results:', time);
       if (query) {
         fetch('travel_recommendation_api.json') 
                            .then(response => response.json())
                 .then(data => {
-                    console.log('Fetched data:', data);
+                    //console.log('Fetched data:', data);
 
                     let results = [];
 
                     data.countries.forEach(country => {
-                        console.log('Processing country:', country.name);
+                        //console.log('Processing country:', country.name);
                         if (country.name.toLowerCase().includes(query)) {
                             results.push(`<h4>${country.name}</h4>`);
                             country.cities.forEach(city => {
-                                results.push(`<p><strong>${city.name}</strong>: ${city.description}</p><img src="${city.imageUrl}" alt="${city.name}" style="width:100px;height:auto;">`);
+                                results.push(`<p><strong>${city.name}</strong>: ${city.description} ${time}</p><img src="${city.imageUrl}" alt="${city.name}" style="width:100px;height:auto;">`);
                             });
                         } else {
                             country.cities.forEach(city => {
-                                console.log('Processing city:', city.name);
+                               // console.log('Processing city:', city.name);
                                 if (city.name.toLowerCase().includes(query)) {
                                     results.push(`<h4>${country.name}</h4>`);
-                                    results.push(`<p><strong>${city.name}</strong>: ${city.description}</p><img src="${city.imageUrl}" alt="${city.name}" style="width:100px;height:auto;">`);
+                                    results.push(`<p><strong>${city.name}</strong>: ${city.description}  ${time} </p><img src="${city.imageUrl}" alt="${city.name}" style="width:100px;height:auto;">`);
                                 }
                             });
                         }
                     });
 
                     data.temples.forEach(temple => {
-                        console.log('Processing temple:', temple.name);
+                        //console.log('Processing temple:', temple.name);
                         if (temple.name.toLowerCase().includes(query)) {
                             results.push(`<h4>Temple: ${temple.name}</h4>`);
-                            results.push(`<p>${temple.description}</p><img src="${temple.imageUrl}" alt="${temple.name}" style="width:100px;height:auto;">`);
+                            results.push(`<p>${temple.description} ${time}</p><img src="${temple.imageUrl}" alt="${temple.name}" style="width:100px;height:auto;">`);
                         }
                     });
 
                     data.beaches.forEach(beach => {
-                        console.log('Processing beach:', beach.name);
+                        //console.log('Processing beach:', beach.name);
                         if (beach.name.toLowerCase().includes(query)) {
                             results.push(`<h4>Beach: ${beach.name}</h4>`);
-                            results.push(`<p>${beach.description}</p><img src="${beach.imageUrl}" alt="${beach.name}" style="width:100px;height:auto;">`);
+                            results.push(`<p>${beach.description} ${time}</p><img src="${beach.imageUrl}" alt="${beach.name}" style="width:100px;height:auto;">`);
                         }
                     });
 
-                    console.log('Search results:', results);
+                    //console.log('Search results:', results);
                     if (results.length > 0) {
                         dialogContent.innerHTML = `<h3>Search Results:</h3>${results.join('')}`;
                     } else {
@@ -78,17 +79,25 @@ closeBtn.addEventListener('click', function () {
 
 
 function Time(place){
+    console.log("place in timeZones:  "+place);
   const timeZones = {
-        "Toronto": "America/Toronto",
-        "New York": "America/New_York",
-        "London": "Europe/London",
-        "Tokyo": "Asia/Tokyo",
-        "Sydney": "Australia/Sydney"
+        
+        "sydney": "Australia/Sydney",
+        "melbourne": "Australia/Melbourne" ,
+        "tokyo": "Asia/Tokyo",
+        "kyoto": "Asia/Tokyo",
+        "rio de janeiro": "America/Sao_Paulo",
+        "são paulo": "America/Sao_Paulo",
+        "angkor wat": "Asia/Phnom_Penh",
+        "taj mahal": "Asia/Kolkata",  
+        "bora bora": "Pacific/Tahiti",
+        "copacabana beach": "America/Sao_Paulo" 
+          
     };
-
+    
     // Get the time zone for the specified place
     const timeZone = timeZones[place];
-
+    console.log("result from timeZone:  "+timeZone);
     if (timeZone) {
         // Create options for formatting the time
         const options = { timeZone: timeZone, hour: '2-digit', minute: '2-digit', second: '2-digit' };
